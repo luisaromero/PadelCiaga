@@ -58,7 +58,7 @@ const welcomeMsg = 'Bienvenida a nuestra tienda'
 app.route('/')
     .get((req, res) => {
         res.render("home", {
-            titulo: name_brand,
+            brand: name_brand,
             products: products,
             msg_welcome: welcomeMsg
         });

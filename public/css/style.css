@@ -127,7 +127,7 @@ main {
 }
 
 .hero-image {
-  width: 100%;
+  width: 80%;
   height: 650px;
   object-fit: cover;
   border-radius: 24px;
@@ -219,4 +219,28 @@ main {
 .copyright {
   color: #999;
   font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    display: none;
+  }
+
+  .hero-btn {
+    display: none;
+  }
+  .hero-section {
+    padding: 4rem 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+  .container {
+    padding-inline: 1.5rem;
+  }
 }
