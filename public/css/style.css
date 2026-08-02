@@ -251,6 +251,24 @@ main {
   align-items: center;
 }
 
+.cart-item {
+  display: flex;
+
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.cart-image {
+  width: 70px;
+
+  height: 90px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
 .add-cart-btn {
   width: 100%;
 

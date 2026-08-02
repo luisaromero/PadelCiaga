@@ -1,17 +1,18 @@
 const products = [
     {
         id: 1,
-        nombre: "Conjunto Padel Mujer Naranjo",
-        precio: 45000,
+        nombre: "Conjunto Padel Mujer Negro",
+        precio: 47000,
         disponible: true,
-        imagen: "/img/products/orange-dress.png"
+        imagen: "/img/products/black-dress.png"
     },
     {
         id: 2,
-        nombre: "Conjunto Padel Mujer Negro",
-        precio: 45000,
-        disponible: true,
-        imagen: "/img/products/black-dress.png"
+        nombre: "Polera Polo Rosada",
+        precio: 20000,
+        disponible: false,
+        imagen: "/img/products/pink-shirt.png"
+
     },
     {
         id: 3,
@@ -29,10 +30,10 @@ const products = [
     },
     {
         id: 5,
-        nombre: "Polera Polo Rosada",
-        precio: 20000,
-        disponible: false,
-        imagen: "/img/products/pink-shirt.png"
+        nombre: "Raqueta de Padel Iniciación",
+        precio: 55000,
+        disponible: true,
+        imagen: "/img/products/black-racket.png"
     },
     {
         id: 6,
@@ -50,17 +51,19 @@ const products = [
     },
     {
         id: 8,
-        nombre: "Raqueta de Padel Iniciación",
-        precio: 55000,
+        nombre: "Tubo de Pelotas Padel x3",
+        precio: 7500,
         disponible: true,
-        imagen: "/img/products/black-racket.png"
+        imagen: "/img/products/balls.png"
+
+
     },
     {
         id: 9,
-        nombre: "Conjunto Padel Mujer Rosado",
-        precio: 62000,
+        nombre: "Jockey Deportiva azul",
+        precio: 15000,
         disponible: true,
-        imagen: "/img/products/pink-set.png"
+        imagen: "/img/products/blue-jockey.png"
     },
 
     {
@@ -72,17 +75,19 @@ const products = [
     },
     {
         id: 11,
-        nombre: "Jockey Deportiva azul",
-        precio: 15000,
+        nombre: "Conjunto Padel Mujer Rosado",
+        precio: 62000,
         disponible: true,
-        imagen: "/img/products/blue-jockey.png"
+        imagen: "/img/products/pink-set.png"
+
+
     },
     {
         id: 12,
-        nombre: "Tubo de Pelotas Padel x3",
-        precio: 7500,
+        nombre: "Conjunto Padel Mujer Naranjo",
+        precio: 42000,
         disponible: true,
-        imagen: "/img/products/balls.png"
+        imagen: "/img/products/orange-dress.png"
     },
 
 ];
