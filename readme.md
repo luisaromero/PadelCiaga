@@ -8,9 +8,9 @@ La plataforma permite explorar productos, visualizar disponibilidad, agregar art
 
 El proyecto se encuentra desplegado en **Render**.
 
-> Nota: Al estar alojado en un servicio gratuito, el servidor puede entrar en modo inactivo. Si al ingresar la página no carga a la primera, espera unos segundos y vuelve a intentarlo para activar nuevamente el servidor.
+> Nota: Al estar alojado en un servicio gratuito, el servidor puede entrar en modo inactivo. Si al ingresar la página no carga la data a la primera, espera unos segundos y vuelve a intentarlo para activar nuevamente el servidor.
 
-🔗 **Demo:** 
+🔗  
 ## Link :
 
 *https://padelciaga.onrender.com/*
