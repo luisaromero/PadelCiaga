@@ -1,4 +1,4 @@
-# Padel Ciaga 🎾
+# Padel Ciaga 
 
 **Padel Ciaga** es una tienda online de ropa deportiva creada **por y para mujeres que disfrutan del pádel**. Un proyecto enfocado en combinar comodidad, rendimiento y diseño contemporáneo, con una estética minimalista inspirada en marcas deportivas femeninas.
 
@@ -10,7 +10,7 @@ El proyecto se encuentra desplegado en **Render**.
 
 > Nota: Al estar alojado en un servicio gratuito, el servidor puede entrar en modo inactivo. Si al ingresar la página no carga la data a la primera, espera unos segundos y vuelve a intentarlo para activar nuevamente el servidor.
 
-🔗  
+  
 ## Link :
 
 *https://padelciaga.onrender.com/*
