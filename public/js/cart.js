@@ -2,7 +2,11 @@ const cartItems = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
 const cartCount = document.getElementById("cart-count");
 
-const cart = [];
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 function renderCart() {
 
@@ -41,7 +45,7 @@ function renderCart() {
         deleteButton.addEventListener("click", () => {
 
             cart.splice(index, 1);
-
+            saveCart();
             renderCart();
 
         });
@@ -98,6 +102,8 @@ document.querySelectorAll(".add-cart-btn").forEach(button => {
             });
 
         }
+
+        saveCart();
 
         renderCart();
 
