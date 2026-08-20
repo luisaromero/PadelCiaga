@@ -7,8 +7,10 @@
 }
 
 .cart-header h1 {
-  font-size: 3rem;
-  font-weight: 500;
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  color: #222;
   margin-top: 0.75rem;
 }
 
@@ -34,9 +36,10 @@
 
 .summary-label {
   display: block;
-  font-size: 0.7rem;
-  letter-spacing: 2px;
-  color: #888;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  color: #999;
   margin-bottom: 2rem;
 }
 
@@ -106,23 +109,25 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
 }
 
 .cart-page-info h3 {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 400;
   margin-bottom: 0.5rem;
 }
 
 .cart-page-info p {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
 .cart-page-info span {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #999;
 }
 
 .empty-cart-page {
@@ -136,33 +141,54 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin: 1rem 0;
 }
 
 .quantity-btn {
-  width: 28px;
-  height: 28px;
-  border: 1px solid #ddd;
+  border: 0;
   background: transparent;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+
+  font-family: inherit;
   font-size: 1rem;
+  font-weight: 300;
+  color: #777;
+
   cursor: pointer;
-  transition: 0.2s ease;
+
+  transition: color 0.3s ease;
 }
 
 .quantity-btn:hover {
-  background: #111;
-  color: white;
-  border-color: #111;
+  color: #111;
+}
+
+.quantity-btn:active {
+  transform: scale(0.9);
 }
 
 .quantity-value {
   min-width: 20px;
   text-align: center;
   font-size: 0.85rem;
+}
+
+/* link to continue buying */
+.cart-navigation {
+  margin-top: 2.5rem;
+}
+
+.continue-shopping {
+  color: #555;
+  text-decoration: none;
+
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+
+  transition: color 0.3s ease;
+}
+
+.continue-shopping:hover {
+  color: #111;
 }
 
 @media (max-width: 576px) {
