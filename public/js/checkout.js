@@ -15,6 +15,20 @@ function renderCheckout() {
     checkoutItems.replaceChildren();
 
     let total = 0;
+    if (cart.length === 0) {
+
+        const empty = document.createElement("p");
+
+        empty.className = "empty-cart";
+        empty.textContent = "Tu carrito está vacío.";
+
+        checkoutItems.appendChild(empty);
+
+        checkoutSubtotal.textContent = "$0";
+        checkoutTotal.textContent = "$0";
+
+        return;
+    }
 
     cart.forEach(product => {
 
@@ -62,6 +76,9 @@ function renderCheckout() {
 }
 
 if (checkoutForm) {
+    if (cart.length === 0) {
+        return;
+    }
 
     checkoutForm.addEventListener("submit", event => {
 
