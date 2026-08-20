@@ -1,0 +1,207 @@
+.checkout-page {
+  padding: 5rem 0;
+}
+
+.checkout-header {
+  margin-bottom: 4rem;
+}
+
+.checkout-header h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0.75rem 0;
+}
+
+.checkout-header p {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.checkout-section {
+  margin-bottom: 3.5rem;
+}
+
+.checkout-label {
+  display: block;
+
+  font-size: 0.65rem;
+  font-weight: 500;
+
+  letter-spacing: 2.5px;
+
+  color: #999;
+
+  margin-bottom: 1.75rem;
+}
+
+.checkout-section label {
+  display: block;
+
+  font-size: 0.8rem;
+  color: #555;
+
+  margin-bottom: 0.5rem;
+}
+
+.optional {
+  color: #aaa;
+  font-size: 0.7rem;
+}
+
+.checkout-input {
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+
+  padding: 0.8rem 0.9rem;
+
+  font-family: inherit;
+  font-size: 0.85rem;
+
+  background: white;
+
+  box-shadow: none !important;
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.checkout-input:focus {
+  border-color: #111;
+  background: #fff;
+}
+
+.checkout-summary {
+  position: sticky;
+  top: 2rem;
+
+  padding: 2rem;
+
+  background: white;
+
+  border: 1px solid #ececec;
+  border-radius: 20px;
+}
+
+.checkout-item {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+
+  border-bottom: 1px solid #eee;
+}
+
+.checkout-item-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.25rem;
+}
+
+.checkout-item-name {
+  font-size: 0.85rem;
+}
+
+.checkout-item-quantity {
+  font-size: 0.7rem;
+  color: #999;
+}
+
+.checkout-item-price {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.summary-line {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 1rem;
+
+  font-size: 0.8rem;
+
+  color: #777;
+}
+
+.summary-total {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid #ddd;
+}
+
+.summary-total span {
+  font-size: 0.85rem;
+}
+
+.summary-total strong {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.checkout-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  padding: 0.95rem 1.5rem;
+
+  border: none;
+  border-radius: 999px;
+
+  background: #111;
+  color: white;
+
+  font-family: inherit;
+  font-size: 0.8rem;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background: #333;
+  color: white;
+
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .checkout-page {
+    padding: 3.5rem 0;
+  }
+
+  .checkout-header {
+    margin-bottom: 3rem;
+  }
+
+  .checkout-header h1 {
+    font-size: 2rem;
+  }
+
+  .checkout-summary {
+    position: static;
+
+    margin-top: 1rem;
+  }
+}
+.container {
+  padding-inline: 1.5rem;
+}

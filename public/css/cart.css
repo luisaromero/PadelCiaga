@@ -220,3 +220,7 @@
     position: static;
   }
 }
+
+.container {
+  padding-inline: 1.5rem;
+}

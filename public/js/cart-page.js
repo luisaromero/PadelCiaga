@@ -1,6 +1,7 @@
 const cartPageItems = document.getElementById("cart-page-items");
 const cartPageTotal = document.getElementById("cart-page-total");
 const cartPageFinalTotal = document.getElementById("cart-page-final-total");
+const cartCount = document.getElementById("cart-count");
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -70,6 +71,7 @@ function renderCartPage() {
 
             saveCart();
             renderCartPage();
+            updateCartCount();
 
         });
 
@@ -80,6 +82,7 @@ function renderCartPage() {
 
             saveCart();
             renderCartPage();
+            updateCartCount();
 
         });
 
@@ -101,6 +104,7 @@ function renderCartPage() {
 
             saveCart();
             renderCartPage();
+            updateCartCount();
 
         });
 
@@ -137,6 +141,17 @@ function renderCartPage() {
     cartPageTotal.textContent = formattedTotal;
     cartPageFinalTotal.textContent = formattedTotal;
 
+}
+// update the cart icon ein the nav
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const count = cart.reduce(
+        (total, product) => total + product.cantidad,
+        0
+    );
+
+    cartCount.textContent = count;
 }
 
 renderCartPage();

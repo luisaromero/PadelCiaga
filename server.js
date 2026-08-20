@@ -103,6 +103,20 @@ app.route('/cart')
     .all((req, res) => {
         res.status(405).send("Método no permitido");
     });
+
+app.route('/checkout')
+
+    .get((req, res) => {
+
+        res.render("checkout");
+
+    })
+
+    .all((req, res) => {
+
+        res.status(405).send("Método no permitido");
+
+    });
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
 // ==========================================
