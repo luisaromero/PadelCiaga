@@ -96,9 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
     // AGREGAR PRODUCTOS
-    // ==========================================
+
 
     document.querySelectorAll(".add-cart-btn").forEach(button => {
 
@@ -143,9 +142,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // ==========================================
     // CARGAR CARRITO DESDE LOCALSTORAGE
-    // ==========================================
+
 
     renderCart();
 

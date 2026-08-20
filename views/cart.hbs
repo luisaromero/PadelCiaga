@@ -1,6 +1,39 @@
-<section class="container py-5">
-  <div class="row align-items-center g-5">
+<section class="container py-5 cart-page">
+  <div class="cart-header">
 
-    <p>CART</p>
+    <h1>Shopping Bag</h1>
   </div>
+
+  <div class="cart-layout">
+
+    <div class="cart-products">
+      <div id="cart-page-items"></div>
+    </div>
+
+    <aside class="cart-summary">
+
+      <span class="summary-label">
+        ORDER SUMMARY
+      </span>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong id="cart-page-total">$0</strong>
+      </div>
+
+      <div class="summary-divider"></div>
+
+      <div class="summary-row summary-total">
+        <span>Total</span>
+        <strong id="cart-page-final-total">$0</strong>
+      </div>
+
+      <button class="checkout-btn">
+        Checkout
+      </button>
+
+    </aside>
+
+  </div>
+
 </section>

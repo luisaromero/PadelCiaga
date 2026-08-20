@@ -94,6 +94,15 @@ app.route('/contact')
         res.status(405).send("Método no permitido");
     });
 
+app.route('/cart')
+    .get((req, res) => {
+        res.render("cart", {
+            cartPage: true
+        });
+    })
+    .all((req, res) => {
+        res.status(405).send("Método no permitido");
+    });
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
 // ==========================================
