@@ -29,6 +29,8 @@ main {
   color: #111 !important;
 }
 
+/* //navbar */
+
 .navbar-nav {
   gap: 2rem;
 }
@@ -49,7 +51,7 @@ main {
   letter-spacing: 3px;
   color: #8b8b8b;
 }
-
+/* // about section */
 .about-title {
   font-size: 3rem;
   font-weight: 600;
