@@ -8,6 +8,7 @@ const path = require('path');
 const products = require('./products');
 
 const { engine } = require('express-handlebars');
+const pool = require("./config/db");
 
 const app = express();
 
@@ -117,6 +118,45 @@ app.route('/checkout')
         res.status(405).send("Método no permitido");
 
     });
+
+// PRUEBA POSTGRESQL
+app.get("/users", async (req, res) => {
+
+    try {
+
+        const result = await pool.query("SELECT * FROM users");
+
+        res.json(result.rows);
+
+    } catch (error) {
+
+        console.error("Error obteniendo usuarios:", error);
+
+        res.status(500).send("Error al obtener usuarios");
+
+    }
+
+});
+
+app.route('/register')
+    .get((req, res) => {
+        res.render("register");
+    })
+    .post(async (req, res) => {
+
+        const { nombre, email, password } = req.body;
+
+        console.log({
+            nombre,
+            email,
+            password
+        });
+
+        res.send("Registro recibido");
+    })
+    .all((req, res) => {
+        res.status(405).send("Método no permitido");
+    });
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
 // ==========================================
@@ -137,9 +177,20 @@ app.use((err, req, res, next) => {
     });
 });
 
+
 // ==========================================
 // 7. ARRANQUE DEL SERVIDOR
 // ==========================================
+
+pool.query("SELECT NOW()")
+    .then(result => {
+        console.log("✅ PostgreSQL conectado");
+        console.log("Hora de PostgreSQL:", result.rows[0].now);
+    })
+    .catch(error => {
+        console.error("❌ Error conectando a PostgreSQL:", error.message);
+    });
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
