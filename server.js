@@ -123,26 +123,13 @@ app.route('/checkout')
 // PRUEBA POSTGRESQL
 
 app.route('/register')
+
     .get((req, res) => {
+
         res.render("register");
+
     })
-    .post(async (req, res) => {
 
-        const { nombre, email, password } = req.body;
-
-        console.log({
-            nombre,
-            email,
-            password
-        });
-
-        res.send("Registro recibido");
-    })
-    .all((req, res) => {
-        res.status(405).send("Método no permitido");
-    });
-
-app.route('/register')
     .post(async (req, res) => {
 
         const { nombre, email, password } = req.body;
@@ -153,7 +140,7 @@ app.route('/register')
 
             await pool.query(
                 `INSERT INTO users (nombre, email, password)
-             VALUES ($1, $2, $3)`,
+                 VALUES ($1, $2, $3)`,
                 [nombre, email, hashedPassword]
             );
 
@@ -163,11 +150,32 @@ app.route('/register')
 
             console.error("Error registrando usuario:", error);
 
-            res.status(500).send("Error al registrar usuario");
+            if (error.code === "23505") {
+
+                return res.status(400).render("register", {
+                    error: "Este email ya está registrado.",
+                    nombre: nombre,
+                    email: email
+                });
+
+
+            }
+
+            res.status(500).render("register", {
+                error: "No pudimos crear tu cuenta. Inténtalo nuevamente."
+            });
 
         }
 
     })
+
+    .all((req, res) => {
+
+        res.status(405).send("Método no permitido");
+
+    });
+
+
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
 // ==========================================

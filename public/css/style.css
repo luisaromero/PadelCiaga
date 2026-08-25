@@ -352,6 +352,25 @@ main {
   color: #111;
   text-decoration: underline;
 }
+/* // register */
+
+.register-error {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.75rem 1rem;
+
+  margin-bottom: 1.5rem;
+
+  border: 1px solid #e8caca;
+  border-radius: 12px;
+
+  background: #fff6f6;
+  color: #a33a3a;
+
+  font-size: 0.9rem;
+}
 
 /* FOOTER */
 .footer {

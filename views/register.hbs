@@ -19,6 +19,14 @@
       <form action="/register" method="POST">
 
         <div class="mb-3">
+          {{#if error}}
+
+            <div class="register-error" role="alert">
+              <i class="bi bi-exclamation-circle"></i>
+              {{error}}
+            </div>
+
+          {{/if}}
 
           <label for="nombre" class="form-label">
             Nombre
@@ -29,6 +37,7 @@
             id="nombre"
             name="nombre"
             class="form-control"
+            value="{{nombre}}"
             required
           />
 
@@ -45,6 +54,7 @@
             id="email"
             name="email"
             class="form-control"
+            value="{{email}}"
             required
           />
 
@@ -55,7 +65,6 @@
           <label for="password" class="form-label">
             Contraseña
           </label>
-
           <input
             type="password"
             id="password"
