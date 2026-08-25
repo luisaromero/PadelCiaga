@@ -9,6 +9,7 @@ const products = require('./products');
 
 const { engine } = require('express-handlebars');
 const pool = require("./config/db");
+const bcrypt = require("bcrypt");
 
 const app = express();
 
@@ -120,23 +121,6 @@ app.route('/checkout')
     });
 
 // PRUEBA POSTGRESQL
-app.get("/users", async (req, res) => {
-
-    try {
-
-        const result = await pool.query("SELECT * FROM users");
-
-        res.json(result.rows);
-
-    } catch (error) {
-
-        console.error("Error obteniendo usuarios:", error);
-
-        res.status(500).send("Error al obtener usuarios");
-
-    }
-
-});
 
 app.route('/register')
     .get((req, res) => {
@@ -157,6 +141,33 @@ app.route('/register')
     .all((req, res) => {
         res.status(405).send("Método no permitido");
     });
+
+app.route('/register')
+    .post(async (req, res) => {
+
+        const { nombre, email, password } = req.body;
+
+        try {
+
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            await pool.query(
+                `INSERT INTO users (nombre, email, password)
+             VALUES ($1, $2, $3)`,
+                [nombre, email, hashedPassword]
+            );
+
+            res.send("Usuario registrado correctamente");
+
+        } catch (error) {
+
+            console.error("Error registrando usuario:", error);
+
+            res.status(500).send("Error al registrar usuario");
+
+        }
+
+    })
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
 // ==========================================
