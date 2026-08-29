@@ -51,6 +51,15 @@ main {
   letter-spacing: 3px;
   color: #8b8b8b;
 }
+.logout-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+.user-name {
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+}
 /* // about section */
 .about-title {
   font-size: 3rem;

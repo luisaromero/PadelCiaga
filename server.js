@@ -26,6 +26,25 @@ app.use(session({
     }
 }));
 
+app.use((req, res, next) => {
+
+    if (req.session.userId) {
+
+        res.locals.user = {
+            id: req.session.userId,
+            nombre: req.session.userName
+        };
+
+    } else {
+
+        res.locals.user = null;
+
+    }
+
+    next();
+
+});
+
 // ==========================================
 // 2. MIDDLEWARES GLOBALES
 // ==========================================
@@ -291,14 +310,14 @@ app.post("/logout", (req, res) => {
     });
 
 });
-// app.get("/me", (req, res) => {
+app.get("/me", (req, res) => {
 
-//     res.json({
-//         userId: req.session.userId,
-//         userName: req.session.userName
-//     });
+    res.json({
+        userId: req.session.userId,
+        userName: req.session.userName
+    });
 
-// });
+});
 
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
