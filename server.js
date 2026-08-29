@@ -175,6 +175,72 @@ app.route('/register')
 
     });
 
+app.route('/login')
+
+    .get((req, res) => {
+
+        res.render("login");
+
+    })
+
+    .post(async (req, res) => {
+
+        const { email, password } = req.body;
+
+        try {
+
+            const result = await pool.query(
+                `SELECT * FROM users
+                 WHERE email = $1`,
+                [email]
+            );
+
+            const user = result.rows[0];
+
+            if (!user) {
+
+                return res.status(400).render("login", {
+                    error: "El email o la contraseña no son correctos.",
+                    email
+                });
+
+            }
+
+            const passwordMatch = await bcrypt.compare(
+                password,
+                user.password
+            );
+
+            if (!passwordMatch) {
+
+                return res.status(400).render("login", {
+                    error: "El email o la contraseña no son correctos.",
+                    email
+                });
+
+            }
+
+            res.send(`Bienvenida ${user.nombre}`);
+
+        } catch (error) {
+
+            console.error("Error iniciando sesión:", error);
+
+            res.status(500).render("login", {
+                error: "No pudimos iniciar sesión. Inténtalo nuevamente.",
+                email
+            });
+
+        }
+
+    })
+
+    .all((req, res) => {
+
+        res.status(405).send("Método no permitido");
+
+    });
+
 
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
