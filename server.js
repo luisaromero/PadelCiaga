@@ -256,15 +256,49 @@ app.route('/login')
         res.status(405).send("Método no permitido");
 
     });
+app.post("/logout", (req, res) => {
 
-app.get("/me", (req, res) => {
+    req.session.destroy((error) => {
 
-    res.json({
-        userId: req.session.userId,
-        userName: req.session.userName
+        if (error) {
+
+            console.error("Error cerrando sesión:", error);
+
+            return res.status(500).send("No se pudo cerrar la sesión.");
+
+        }
+
+        res.redirect("/");
+
     });
 
 });
+
+app.post("/logout", (req, res) => {
+
+    req.session.destroy((error) => {
+
+        if (error) {
+
+            console.error("Error cerrando sesión:", error);
+
+            return res.status(500).send("No se pudo cerrar la sesión.");
+
+        }
+
+        res.redirect("/");
+
+    });
+
+});
+// app.get("/me", (req, res) => {
+
+//     res.json({
+//         userId: req.session.userId,
+//         userName: req.session.userName
+//     });
+
+// });
 
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
