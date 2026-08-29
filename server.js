@@ -10,8 +10,21 @@ const products = require('./products');
 const { engine } = require('express-handlebars');
 const pool = require("./config/db");
 const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 const app = express();
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax"
+    }
+}));
 
 // ==========================================
 // 2. MIDDLEWARES GLOBALES
@@ -219,8 +232,11 @@ app.route('/login')
                 });
 
             }
+            req.session.userId = user.id;
+            req.session.userName = user.nombre;
 
             res.send(`Bienvenida ${user.nombre}`);
+
 
         } catch (error) {
 
@@ -241,6 +257,14 @@ app.route('/login')
 
     });
 
+app.get("/me", (req, res) => {
+
+    res.json({
+        userId: req.session.userId,
+        userName: req.session.userName
+    });
+
+});
 
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)
