@@ -18,16 +18,14 @@
 
       <form action="/register" method="POST">
 
+        {{#if error}}
+          <div class="register-error" role="alert">
+            <i class="bi bi-exclamation-circle"></i>
+            {{error}}
+          </div>
+        {{/if}}
+
         <div class="mb-3">
-          {{#if error}}
-
-            <div class="register-error" role="alert">
-              <i class="bi bi-exclamation-circle"></i>
-              {{error}}
-            </div>
-
-          {{/if}}
-
           <label for="nombre">Nombre</label>
           <input type="text" id="nombre" name="nombre" required />
         </div>

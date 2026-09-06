@@ -189,7 +189,7 @@ app.route('/register')
                 [nombre, apellido, email, hashedPassword]
             );
 
-            res.send("Usuario registrado correctamente");
+            res.redirect("/login?success=Cuenta creada correctamente. Ahora puedes iniciar sesión.");
 
         } catch (error) {
 
@@ -224,7 +224,9 @@ app.route('/login')
 
     .get((req, res) => {
 
-        res.render("login");
+        res.render("login", {
+            success: req.query.success
+        });
 
     })
 
