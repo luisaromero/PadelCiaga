@@ -36,14 +36,12 @@
           </li>
           {{#if user}}
 
-            <li class="nav-item">
-              <span class="nav-link">
-                Hola,
-                <span class="user-name">
-                  {{user.nombre}}
-                </span>
+            <a href="/profile" class="nav-link user-greeting">
+              Hola,
+              <span class="user-name">
+                {{user.nombre}}
               </span>
-            </li>
+            </a>
             <li class="nav-item">
 
               <form action="/logout" method="POST">

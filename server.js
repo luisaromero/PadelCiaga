@@ -45,6 +45,18 @@ app.use((req, res, next) => {
 
 });
 
+const requireAuth = (req, res, next) => {
+
+    if (!req.session.userId) {
+
+        return res.redirect("/login");
+
+    }
+
+    next();
+
+};
+
 // ==========================================
 // 2. MIDDLEWARES GLOBALES
 // ==========================================
@@ -140,9 +152,10 @@ app.route('/cart')
 
 app.route('/checkout')
 
-    .get((req, res) => {
-
-        res.render("checkout");
+    .get(requireAuth, (req, res) => {
+        res.render("checkout", {
+            checkoutPage: true
+        });
 
     })
 
@@ -164,16 +177,16 @@ app.route('/register')
 
     .post(async (req, res) => {
 
-        const { nombre, email, password } = req.body;
+        const { nombre, apellido, email, password } = req.body;
 
         try {
 
             const hashedPassword = await bcrypt.hash(password, 10);
 
             await pool.query(
-                `INSERT INTO users (nombre, email, password)
-                 VALUES ($1, $2, $3)`,
-                [nombre, email, hashedPassword]
+                `INSERT INTO users (nombre, apellido, email, password)
+                    VALUES ($1, $2, $3, $4)`,
+                [nombre, apellido, email, hashedPassword]
             );
 
             res.send("Usuario registrado correctamente");
@@ -254,7 +267,7 @@ app.route('/login')
             req.session.userId = user.id;
             req.session.userName = user.nombre;
 
-            res.send(`Bienvenida ${user.nombre}`);
+            res.redirect("/");
 
 
         } catch (error) {
@@ -275,23 +288,6 @@ app.route('/login')
         res.status(405).send("Método no permitido");
 
     });
-app.post("/logout", (req, res) => {
-
-    req.session.destroy((error) => {
-
-        if (error) {
-
-            console.error("Error cerrando sesión:", error);
-
-            return res.status(500).send("No se pudo cerrar la sesión.");
-
-        }
-
-        res.redirect("/");
-
-    });
-
-});
 
 app.post("/logout", (req, res) => {
 
@@ -310,14 +306,101 @@ app.post("/logout", (req, res) => {
     });
 
 });
-app.get("/me", (req, res) => {
 
-    res.json({
-        userId: req.session.userId,
-        userName: req.session.userName
+app.route('/profile')
+
+    .get(requireAuth, async (req, res) => {
+
+        try {
+
+            const result = await pool.query(
+                `SELECT id, nombre, apellido, email, telefono, direccion
+                      FROM users
+                      WHERE id = $1`,
+                [req.session.userId]
+            );
+
+            const user = result.rows[0];
+
+            if (!user) {
+
+                return res.redirect("/login");
+
+            }
+
+            res.render("profile", {
+                user
+            });
+
+        } catch (error) {
+
+            console.error("Error obteniendo perfil:", error);
+
+            res.status(500).send("No pudimos cargar tu perfil.");
+
+        }
+
+    })
+    .post(requireAuth, async (req, res) => {
+
+        const {
+            nombre,
+            apellido,
+            email,
+            telefono,
+            direccion
+        } = req.body;
+
+        try {
+
+            await pool.query(
+                `UPDATE users
+             SET nombre = $1,
+                 apellido = $2,
+                 email = $3,
+                 telefono = $4,
+                 direccion = $5
+             WHERE id = $6`,
+                [
+                    nombre,
+                    apellido,
+                    email,
+                    telefono,
+                    direccion,
+                    req.session.userId
+                ]
+            );
+
+            req.session.userName = nombre;
+
+            res.redirect("/profile");
+
+        } catch (error) {
+
+            console.error("Error actualizando perfil:", error);
+
+            if (error.code === "23505") {
+
+                return res.status(400).render("profile", {
+                    error: "Este email ya está registrado."
+                });
+
+            }
+
+            res.status(500).render("profile", {
+                error: "No pudimos actualizar tu perfil."
+            });
+
+        }
+    })
+
+    .all((req, res) => {
+
+        res.status(405).send("Método no permitido");
+
     });
 
-});
+
 
 // ==========================================
 // 6. MANEJO DE ERRORES (siempre al final)

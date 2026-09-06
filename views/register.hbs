@@ -28,54 +28,26 @@
 
           {{/if}}
 
-          <label for="nombre" class="form-label">
-            Nombre
-          </label>
-
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            class="form-control"
-            value="{{nombre}}"
-            required
-          />
-
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required />
         </div>
 
         <div class="mb-3">
-
-          <label for="email" class="form-label">
-            Email
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            value="{{email}}"
-            required
-          />
-
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" required />
         </div>
 
-        <div class="mb-4">
-
-          <label for="password" class="form-label">
-            Contraseña
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            required
-          />
-
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
         </div>
 
-        <button type="submit" class="btn btn-dark rounded-pill w-100">
+        <div class="mb-3">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <button type="submit">
           Crear cuenta
         </button>
 
