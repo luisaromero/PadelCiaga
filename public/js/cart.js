@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
-    if (cart.length === 0) {
+    if (cart.length === 0 && checkoutLink) {
         checkoutLink.style.display = "none";
     }
 
