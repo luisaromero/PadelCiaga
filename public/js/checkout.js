@@ -4,6 +4,11 @@ const checkoutTotal = document.getElementById("checkout-total");
 const checkoutForm = document.getElementById("checkout-form");
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+if (cart.length === 0) {
+    window.location.href = "/cart";
+}
+
 console.log("CARRITO CHECKOUT:", cart);
 
 function formatPrice(price) {
@@ -117,6 +122,11 @@ if (checkoutForm) {
             const data = await response.json();
 
             console.log("RESPUESTA DEL SERVIDOR:", data);
+
+            localStorage.removeItem("cart");
+
+            window.location.href = `/order-success/${data.orderId}`;
+
 
         } catch (error) {
             console.error("Error enviando el pedido:", error);

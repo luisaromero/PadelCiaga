@@ -503,6 +503,12 @@ app.route('/profile')
 
     });
 
+app.get("/order-success/:id", requireAuth, (req, res) => {
+    res.render("order-success", {
+        orderId: req.params.id
+    });
+});
+
 
 
 // ==========================================
