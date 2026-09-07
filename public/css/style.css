@@ -532,6 +532,71 @@ form[action="/register"] button:hover {
   color: #111;
 }
 
+/*  PROFILE */
+
+.profile-card {
+  padding: 2.5rem;
+  border: 1px solid #e1e1e1;
+  background-color: #fff;
+}
+
+form[action="/profile"] label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #333;
+}
+
+form[action="/profile"] input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 0;
+  background-color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+form[action="/profile"] input:focus {
+  border-color: #222;
+  box-shadow: none;
+}
+
+form[action="/profile"] input::placeholder {
+  color: #aaa;
+}
+
+form[action="/profile"] button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px 20px;
+  border: 1px solid #111;
+  border-radius: 0;
+  background-color: #111;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+form[action="/profile"] button:hover {
+  background-color: #fff;
+  color: #111;
+}
+
 @media (max-width: 768px) {
   .hero-image {
     display: none;

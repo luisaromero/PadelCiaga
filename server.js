@@ -27,6 +27,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
+    console.log("SESSION ACTUAL:", req.session);
 
     if (req.session.userId) {
 
@@ -49,12 +50,12 @@ const requireAuth = (req, res, next) => {
 
     if (!req.session.userId) {
 
-        return res.redirect("/login");
+        req.session.returnTo = req.originalUrl;
 
+        return res.redirect("/login");
     }
 
     next();
-
 };
 
 // ==========================================
@@ -152,10 +153,35 @@ app.route('/cart')
 
 app.route('/checkout')
 
-    .get(requireAuth, (req, res) => {
-        res.render("checkout", {
-            checkoutPage: true
-        });
+    .get(requireAuth, async (req, res) => {
+
+        try {
+
+            const result = await pool.query(
+                `SELECT id, nombre, apellido, email, telefono, direccion
+                 FROM users
+                 WHERE id = $1`,
+                [req.session.userId]
+            );
+
+            const user = result.rows[0];
+
+            if (!user) {
+                return res.redirect("/login");
+            }
+
+            res.render("checkout", {
+                checkoutPage: true,
+                user
+            });
+
+        } catch (error) {
+
+            console.error("Error obteniendo datos del usuario:", error);
+
+            res.status(500).send("No pudimos cargar el checkout.");
+
+        }
 
     })
 
@@ -165,7 +191,78 @@ app.route('/checkout')
 
     });
 
-// PRUEBA POSTGRESQL
+
+app.post("/orders", async (req, res) => {
+
+    const client = await pool.connect();
+
+    try {
+
+        const { customer, products } = req.body;
+
+        if (!products || products.length === 0) {
+            return res.status(400).json({
+                error: "El carrito está vacío."
+            });
+        }
+
+        await client.query("BEGIN");
+
+        // Calculamos el total en el backend
+        const total = products.reduce((sum, product) => {
+            return sum + (product.precio * product.cantidad);
+        }, 0);
+
+        // Creamos la orden
+        const orderResult = await client.query(
+            `INSERT INTO orders (user_id, total)
+             VALUES ($1, $2)
+             RETURNING id`,
+            [req.session.userId, total]
+        );
+
+        const orderId = orderResult.rows[0].id;
+
+        // Guardamos cada producto de la orden
+        for (const product of products) {
+
+            await client.query(
+                `INSERT INTO order_items
+                 (order_id, product_id, quantity, price)
+                 VALUES ($1, $2, $3, $4)`,
+                [
+                    orderId,
+                    product.id,
+                    product.cantidad,
+                    product.precio
+                ]
+            );
+
+        }
+
+        await client.query("COMMIT");
+
+        res.json({
+            message: "Pedido creado correctamente",
+            orderId
+        });
+
+    } catch (error) {
+
+        await client.query("ROLLBACK");
+
+        console.error("Error creando pedido:", error);
+
+        res.status(500).json({
+            error: "No pudimos crear el pedido."
+        });
+
+    } finally {
+
+        client.release();
+
+    }
+});
 
 app.route('/register')
 
@@ -269,7 +366,11 @@ app.route('/login')
             req.session.userId = user.id;
             req.session.userName = user.nombre;
 
-            res.redirect("/");
+            const returnTo = req.session.returnTo || "/";
+
+            delete req.session.returnTo;
+
+            res.redirect(returnTo);
 
 
         } catch (error) {
