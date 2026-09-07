@@ -3,8 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartItems = document.getElementById("cart-items");
     const cartTotal = document.getElementById("cart-total");
     const cartCount = document.getElementById("cart-count");
+    const checkoutLink = document.getElementById("checkout-link");
+
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    if (cart.length === 0) {
+        checkoutLink.style.display = "none";
+    }
 
     function saveCart() {
         localStorage.setItem("cart", JSON.stringify(cart));

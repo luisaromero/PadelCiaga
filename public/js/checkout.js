@@ -5,6 +5,12 @@ const checkoutForm = document.getElementById("checkout-form");
 
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+if (cart.length === 0) {
+    window.location.href = "/cart";
+}
+
+console.log("CARRITO CHECKOUT:", cart);
+
 function formatPrice(price) {
     return `$${price.toLocaleString("es-CL")}`;
 }
@@ -15,6 +21,7 @@ function renderCheckout() {
     checkoutItems.replaceChildren();
 
     let total = 0;
+    console.log("CARRITO DENTRO DE RENDER:", cart);
     if (cart.length === 0) {
 
         const empty = document.createElement("p");
@@ -76,11 +83,11 @@ function renderCheckout() {
 }
 
 if (checkoutForm) {
-    if (cart.length === 0) {
-        return;
-    }
+    // if (cart.length === 0) {
+    //     return;
+    // }
 
-    checkoutForm.addEventListener("submit", event => {
+    checkoutForm.addEventListener("submit", async event => {
 
         event.preventDefault();
 
@@ -98,12 +105,39 @@ if (checkoutForm) {
             departamento: formData.get("departamento")
         };
 
-        console.log("Datos del cliente:", customer);
-        console.log("Productos:", cart);
+        const order = {
+            customer,
+            products: cart
+        };
+
+        try {
+            const response = await fetch("/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(order)
+            });
+
+            const data = await response.json();
+
+            console.log("RESPUESTA DEL SERVIDOR:", data);
+
+            localStorage.removeItem("cart");
+
+            window.location.href = `/order-success/${data.orderId}`;
+
+
+        } catch (error) {
+            console.error("Error enviando el pedido:", error);
+        }
 
     });
 
 }
+
+console.log("EJECUTANDO CHECKOUT JS");
+console.log("CARRITO:", cart);
 
 renderCheckout()
 

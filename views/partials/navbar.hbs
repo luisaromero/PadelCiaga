@@ -34,6 +34,41 @@
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contacto</a>
           </li>
+          {{#if user}}
+
+            <a href="/profile" class="nav-link user-greeting">
+              Hola,
+              <span class="user-name">
+                {{user.nombre}}
+              </span>
+            </a>
+            <li class="nav-item">
+
+              <form action="/logout" method="POST">
+
+                <button type="submit" class="nav-link logout-btn">
+                  Cerrar sesión
+                </button>
+
+              </form>
+
+            </li>
+
+          {{else}}
+
+            <li class="nav-item">
+              <a class="nav-link" href="/login">
+                Iniciar sesión
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/register">
+                Registro
+              </a>
+            </li>
+
+          {{/if}}
           <button
             class="cart-btn"
             data-bs-toggle="offcanvas"

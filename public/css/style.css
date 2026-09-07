@@ -51,6 +51,15 @@ main {
   letter-spacing: 3px;
   color: #8b8b8b;
 }
+.logout-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+.user-name {
+  font-weight: 600;
+  border-bottom: 1px solid currentColor;
+}
 /* // about section */
 .about-title {
   font-size: 3rem;
@@ -352,6 +361,25 @@ main {
   color: #111;
   text-decoration: underline;
 }
+/* // register */
+
+.register-error {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: 0.75rem 1rem;
+
+  margin-bottom: 1.5rem;
+
+  border: 1px solid #e8caca;
+  border-radius: 12px;
+
+  background: #fff6f6;
+  color: #a33a3a;
+
+  font-size: 0.9rem;
+}
 
 /* FOOTER */
 .footer {
@@ -387,6 +415,186 @@ main {
 .copyright {
   color: #999;
   font-size: 0.85rem;
+}
+/* LOGIN */
+
+.login-register {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.login-register a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.login-register a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+.register-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  padding: 12px 14px;
+  border: 1px solid #b8cbb8;
+  background-color: #f3f8f3;
+  color: #496b49;
+  font-size: 0.9rem;
+}
+
+.register-success i {
+  font-size: 1rem;
+}
+
+/* REGISTER*/
+
+.register-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  padding: 12px 14px;
+  border: 1px solid #d8b4b4;
+  background-color: #faf3f3;
+  color: #8a4a4a;
+  font-size: 0.9rem;
+}
+
+.register-error i {
+  font-size: 1rem;
+}
+
+/* Form */
+
+form[action="/register"] label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #333;
+}
+
+form[action="/register"] input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 0;
+  background-color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+form[action="/register"] input:focus {
+  border-color: #222;
+  box-shadow: none;
+}
+
+form[action="/register"] input::placeholder {
+  color: #aaa;
+}
+
+/* Button */
+
+form[action="/register"] button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px 20px;
+  border: 1px solid #111;
+  border-radius: 0;
+  background-color: #111;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+form[action="/register"] button:hover {
+  background-color: #fff;
+  color: #111;
+}
+
+/*  PROFILE */
+
+.profile-card {
+  padding: 2.5rem;
+  border: 1px solid #e1e1e1;
+  background-color: #fff;
+}
+
+form[action="/profile"] label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #333;
+}
+
+form[action="/profile"] input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 0;
+  background-color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+form[action="/profile"] input:focus {
+  border-color: #222;
+  box-shadow: none;
+}
+
+form[action="/profile"] input::placeholder {
+  color: #aaa;
+}
+
+form[action="/profile"] button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px 20px;
+  border: 1px solid #111;
+  border-radius: 0;
+  background-color: #111;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+form[action="/profile"] button:hover {
+  background-color: #fff;
+  color: #111;
 }
 
 @media (max-width: 768px) {
