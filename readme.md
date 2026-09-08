@@ -1,12 +1,5 @@
 # **PADEL CIAGA 🎾 🙋‍♀️**
 
-## **Índice**
-
-- [Sobre PADEL CIAGA](#Sobre-PADEL-CIAGA)
-- [Sobre el proyecto](#Sobre-el-proyecto)
-- [Proceso de Diseño](#Proceso-de-Diseño)
-- [Despliegue](#Despliegue)
-
 ---
 
 ## **Sobre PADEL CIAGA 🛒**
@@ -16,17 +9,23 @@ En un mundo dónde las mujeres se atreven más a hacer deporte , ya sea para adq
 
 ![inicio web padel ciaga](./public/img/inicio.png)
 
+---
+
 ## **Sobre el proyecto💡**
 
 En este proyecto pretendemos crear un catálogo de productos , en dónde el usuario puede escoger el producto , la cantidad , ver el carrito de compras y similar la compra . Usamos un login y previamente un registro , para poder guardar sus datos en la página .
 
 ![ilustración de mujer jugando padel](./public/img/mujer-jugando-padel.jpg)
 
+---
+
 ### **Proceso de Diseño🎨**
 
 Queremos dirigir este producto a quien se identifique con la feminidad y practique Padel , el diseño es minimalista , además de inspirarse en páginas de productos deportivos.
 
 Decir que para las imágenes 📸 del proyecto se usó el banco de imágenes *https://www.magnific.com/es*
+
+---
 
 ### **Despliegue**
 
@@ -37,6 +36,8 @@ El proyecto se encuentra desplegado en **Render**.
 ## Link :
 
 *https://padelciaga.onrender.com/*
+
+---
 
 ### ✨ Funcionalidades principales ✨
 
