@@ -4,8 +4,8 @@
 
 ## **Sobre PADEL CIAGA 🛒**
 
-En un mundo dónde las mujeres se atreven más a hacer deporte , ya sea para adquirir fuerza , movimiento , tranquilizar tu mente . botar el estrés o simplemente por que te gusta . Sabemos que tener un espacio para poder obtener tu ropa deportiva explusivamente para tu deporte favorito de muchas , _El Padel_ , te invitamos a descubrir nuestros conjuntos y accesorios para que puedas jugar cómodamente y con estilo.
-¿Genial no?.
+En un mundo dónde las mujeres se atreven más a hacer deporte , ya sea para adquirir fuerza , movimiento , tranquilizar tu mente . botar el estrés o simplemente por que te gusta . Sabemos que tener un espacio para poder obtener tu ropa deportiva explusivamente para tu deporte favorito de muchas , **El Pádel** , te invitamos a descubrir nuestros conjuntos y accesorios para que puedas jugar cómodamente y con estilo.
+_¿Genial no?_.
 
 ![inicio web padel ciaga](./public/img/inicio.png)
 
@@ -21,7 +21,7 @@ En este proyecto pretendemos crear un catálogo de productos , en dónde el usua
 
 ### **Proceso de Diseño🎨**
 
-Queremos dirigir este producto a quien se identifique con la feminidad y practique Padel , el diseño es minimalista , además de inspirarse en páginas de productos deportivos.
+Queremos dirigir este producto a quien se identifique con la feminidad y practique Pádel , el diseño es minimalista , además de inspirarse en páginas de productos deportivos.
 
 Decir que para las imágenes 📸 del proyecto se usó el banco de imágenes *https://www.magnific.com/es*
 
