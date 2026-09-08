@@ -9,7 +9,6 @@ if (cart.length === 0) {
     window.location.href = "/cart";
 }
 
-console.log("CARRITO CHECKOUT:", cart);
 
 function formatPrice(price) {
     return `$${price.toLocaleString("es-CL")}`;
@@ -21,7 +20,6 @@ function renderCheckout() {
     checkoutItems.replaceChildren();
 
     let total = 0;
-    console.log("CARRITO DENTRO DE RENDER:", cart);
     if (cart.length === 0) {
 
         const empty = document.createElement("p");
@@ -121,7 +119,6 @@ if (checkoutForm) {
 
             const data = await response.json();
 
-            console.log("RESPUESTA DEL SERVIDOR:", data);
 
             localStorage.removeItem("cart");
 
@@ -129,15 +126,14 @@ if (checkoutForm) {
 
 
         } catch (error) {
-            console.error("Error enviando el pedido:", error);
+            // console.error("Error enviando el pedido:", error);
         }
 
     });
 
 }
 
-console.log("EJECUTANDO CHECKOUT JS");
-console.log("CARRITO:", cart);
+
 
 renderCheckout()
 
