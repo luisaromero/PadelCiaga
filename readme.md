@@ -19,7 +19,7 @@ En este proyecto pretendemos crear un catálogo de productos , en dónde el usua
 
 ---
 
-### **Proceso de Diseño🎨**
+### **Proceso de Diseño 🎨**
 
 Queremos dirigir este producto a quien se identifique con la feminidad y practique Pádel , el diseño es minimalista , además de inspirarse en páginas de productos deportivos.
 
@@ -27,7 +27,7 @@ Decir que para las imágenes 📸 del proyecto se usó el banco de imágenes *ht
 
 ---
 
-### **Despliegue**
+### **Despliegue 🚀**
 
 El proyecto se encuentra desplegado en **Render**.
 
