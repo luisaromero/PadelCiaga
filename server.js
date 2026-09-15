@@ -105,16 +105,101 @@ const welcomeMsg = 'Bienvenida a nuestra tienda'
 // 5. RUTAS
 // ==========================================
 app.route('/')
-    .get((req, res) => {
-        res.render("home", {
-            brand: name_brand,
-            products: products,
-            msg_welcome: welcomeMsg
-        });
+    .get(async (req, res) => {
+
+        try {
+
+            const result = await pool.query(
+                `SELECT
+        p.id,
+        p.nombre,
+        p.precio,
+        p.imagen,
+        COALESCE(
+            JSON_AGG(
+                JSON_BUILD_OBJECT(
+                    'id', v.id,
+                    'talla', v.talla,
+                    'stock', v.stock
+                )
+                ORDER BY v.id
+            ) FILTER (WHERE v.id IS NOT NULL),
+            '[]'
+                ) AS variants
+            FROM products p
+            LEFT JOIN product_variants v
+                ON p.id = v.product_id
+            GROUP BY p.id
+            ORDER BY p.id`
+            );
+
+            res.render("home", {
+                brand: name_brand,
+                products: result.rows,
+                msg_welcome: welcomeMsg
+            });
+
+        } catch (error) {
+
+            console.error("Error obteniendo productos:", error);
+
+            res.status(500).send("No pudimos cargar los productos.");
+
+        }
+
     })
     .all((req, res) => {
         res.status(405).send("Método no permitido");
     });
+
+app.get("/product/:id", async (req, res) => {
+
+    try {
+
+        const productId = req.params.id;
+
+        const result = await pool.query(
+            `SELECT
+                p.id,
+                p.nombre,
+                p.precio,
+                p.imagen,
+                COALESCE(
+                    JSON_AGG(
+                        JSON_BUILD_OBJECT(
+                            'id', v.id,
+                            'talla', v.talla,
+                            'stock', v.stock
+                        )
+                        ORDER BY v.id
+                    ) FILTER (WHERE v.id IS NOT NULL),
+                    '[]'
+                ) AS variants
+             FROM products p
+             LEFT JOIN product_variants v
+                ON p.id = v.product_id
+             WHERE p.id = $1
+             GROUP BY p.id`,
+            [productId]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).send("Producto no encontrado.");
+        }
+
+        res.render("product", {
+            product: result.rows[0]
+        });
+
+    } catch (error) {
+
+        console.error("Error obteniendo producto:", error);
+
+        res.status(500).send("No pudimos cargar el producto.");
+
+    }
+
+});
 
 app.route('/about')
     .get((req, res) => {

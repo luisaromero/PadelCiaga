@@ -102,6 +102,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    // SELECCIONAR VARIANTE
+
+    document.querySelectorAll(".variant-option").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const productCard = button.closest(".product-card");
+
+            productCard
+                .querySelectorAll(".variant-option")
+                .forEach(option => {
+                    option.classList.remove("selected");
+                });
+
+            button.classList.add("selected");
+
+            const variantId = button.dataset.variantId;
+
+            console.log("Variante seleccionada:", variantId);
+
+        });
+
+    });
+
 
     // AGREGAR PRODUCTOS
 
@@ -111,6 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => {
 
             const id = button.dataset.id;
+
+            const productCard = button.closest(".product-card");
+
+            const selectedVariant = productCard.querySelector(".variant-option.selected");
+
+            console.log("Variante:", selectedVariant);
+            console.log("Variant ID:", selectedVariant?.dataset.variantId);
+            console.log("Talla:", selectedVariant?.textContent.trim());
 
             const product = cart.find(item => item.id === id);
 
@@ -153,5 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     renderCart();
+
+
 
 });

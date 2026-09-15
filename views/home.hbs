@@ -46,36 +46,25 @@
 
         <div class="product-card">
 
-          <img src="{{imagen}}" alt="{{nombre}}" class="product-image" />
+          <a href="/product/{{id}}">
+            <img src="{{imagen}}" alt="{{nombre}}" class="product-image" />
+          </a>
 
           <div class="product-info">
 
-            <h3>{{nombre}}</h3>
+            <h3>
+              <a href="/product/{{id}}">
+                {{nombre}}
+              </a>
+            </h3>
 
             <p class="price">
               {{formatCLP precio}}
             </p>
 
-            {{#if disponible}}
-              <span class="stock available">
-                En stock
-              </span>
-              <button
-                class="add-cart-btn"
-                data-id="{{id}}"
-                data-name="{{nombre}}"
-                data-price="{{precio}}"
-                data-image="{{imagen}}"
-              >
-
-                + Agregar al carrito
-
-              </button>
-            {{else}}
-              <span class="stock unavailable">
-                Agotado
-              </span>
-            {{/if}}
+            <a href="/product/{{id}}" class="product-link">
+              Ver producto
+            </a>
 
           </div>
 
