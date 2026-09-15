@@ -1,19 +1,21 @@
-<section class="container py-5">
+<section class="product-detail container py-5">
 
   <div class="row g-5 align-items-center">
 
+    <!-- IMAGEN -->
     <div class="col-lg-6">
 
       <img
         src="{{product.imagen}}"
         alt="{{product.nombre}}"
-        class="img-fluid"
+        class="product-detail-image"
       />
 
     </div>
 
+    <!-- INFORMACIÓN -->
     <div
-      class="col-lg-6"
+      class="col-lg-6 product-detail-info"
       data-product-id="{{product.id}}"
       data-product-name="{{product.nombre}}"
       data-product-price="{{product.precio}}"
@@ -24,29 +26,121 @@
         {{product.nombre}}
       </h1>
 
-      <p>
+      <p class="product-price">
         {{formatCLP product.precio}}
       </p>
+      <!-- COLOR -->
+      <div class="product-color">
 
-      <h2>
-        Variantes
-      </h2>
+        <span class="color-label">
+          Color:
+        </span>
 
-      <div>
+        <span class="color-name">
+          Negro
+        </span>
 
-        {{#each product.variants}}
-
-          <button type="button" class="variant-option" data-variant-id="{{id}}">
-            {{talla}}
-          </button>
-
-        {{/each}}
+        <span class="color-circle" aria-label="Color negro"></span>
 
       </div>
 
+      <!-- DESCRIPCIÓN -->
+      <p class="product-description">
+        {{product.descripcion}}
+      </p>
+
+      <!-- TALLAS -->
+      <div class="product-options">
+
+        <p class="option-title">
+          Selecciona tu talla
+        </p>
+
+        <div class="variant-options">
+
+          {{#each product.variants}}
+
+            <button
+              type="button"
+              class="variant-option"
+              data-variant-id="{{id}}"
+            >
+              {{talla}}
+            </button>
+
+          {{/each}}
+
+        </div>
+
+      </div>
+
+      <!-- CANTIDAD -->
+      <div class="quantity-selector">
+
+        <p class="option-title">
+          Cantidad
+        </p>
+
+        <div class="quantity-controls">
+
+          <button type="button" class="quantity-minus">
+            −
+          </button>
+
+          <span class="quantity-value">
+            1
+          </span>
+
+          <button type="button" class="quantity-plus">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- AGREGAR -->
       <button type="button" class="add-product-btn">
         Agregar al carrito
       </button>
+
+      <!-- BENEFICIOS -->
+      <div class="product-benefits">
+
+        <div class="benefit-card">
+
+          <i class="bi bi-shop"></i>
+
+          <div>
+            <strong>Retiro GRATIS</strong>
+            <span>en tienda</span>
+          </div>
+
+        </div>
+
+        <div class="benefit-card">
+
+          <i class="bi bi-arrow-left-right"></i>
+
+          <div>
+            <strong>Cambios</strong>
+            <span>hasta 60 días</span>
+          </div>
+
+        </div>
+
+        <div class="benefit-card">
+
+          <i class="bi bi-credit-card"></i>
+
+          <div>
+            <strong>Hasta 6 cuotas</strong>
+            <span>sin interés</span>
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
