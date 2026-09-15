@@ -12,7 +12,13 @@
 
     </div>
 
-    <div class="col-lg-6">
+    <div
+      class="col-lg-6"
+      data-product-id="{{product.id}}"
+      data-product-name="{{product.nombre}}"
+      data-product-price="{{product.precio}}"
+      data-product-image="{{product.imagen}}"
+    >
 
       <h1>
         {{product.nombre}}
@@ -30,7 +36,7 @@
 
         {{#each product.variants}}
 
-          <button type="button" data-variant-id="{{id}}">
+          <button type="button" class="variant-option" data-variant-id="{{id}}">
             {{talla}}
           </button>
 
@@ -38,7 +44,7 @@
 
       </div>
 
-      <button type="button">
+      <button type="button" class="add-product-btn">
         Agregar al carrito
       </button>
 

@@ -188,16 +188,22 @@ main {
 }
 
 .product-info h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.65rem;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+.product-info h3 a {
+  color: #3f3f3f;
+  text-decoration: none;
 }
 
 .price {
-  font-size: 1.25rem;
-
-  font-weight: 600;
-
-  margin-top: 0.4rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #111;
 }
 
 .stock {
@@ -305,11 +311,6 @@ main {
   font-size: 1.1rem;
 
   font-weight: 300;
-}
-
-.variant-option.selected {
-  background-color: #000;
-  color: #fff;
 }
 
 .cart-item {

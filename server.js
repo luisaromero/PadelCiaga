@@ -188,7 +188,8 @@ app.get("/product/:id", async (req, res) => {
         }
 
         res.render("product", {
-            product: result.rows[0]
+            product: result.rows[0],
+            productPage: true
         });
 
     } catch (error) {
