@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    //get size
+
+
     const variantButtons =
         document.querySelectorAll("[data-variant-id]");
 
@@ -24,6 +27,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    // function to quantity
+
+    const quantityValue =
+        document.querySelector(".quantity-value");
+
+    const quantityMinus =
+        document.querySelector(".quantity-minus");
+
+    const quantityPlus =
+        document.querySelector(".quantity-plus");
+
+    let quantity = 1;
+
+    quantityPlus.addEventListener("click", () => {
+        quantity++;
+        quantityValue.textContent = quantity;
+    });
+
+    quantityMinus.addEventListener("click", () => {
+
+        if (quantity > 1) {
+            quantity--;
+            quantityValue.textContent = quantity;
+        }
+
+    });
+
+
+    // add to cart
+
+
     const addProductButton =
         document.querySelector(".add-product-btn");
 
@@ -33,9 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector("[data-variant-id].selected");
 
         if (!selectedVariant) {
-
             console.log("Debes seleccionar una talla.");
-
             return;
         }
 
@@ -45,23 +77,49 @@ document.addEventListener("DOMContentLoaded", () => {
         const talla =
             selectedVariant.textContent.trim();
 
-        const productId =
-            document.querySelector("[data-product-id]").dataset.productId;
+        const productElement =
+            document.querySelector("[data-product-id]");
 
         const product = {
-            id: productId,
+            id: productElement.dataset.productId,
             variantId,
             talla,
-            nombre: document.querySelector("[data-product-name]").dataset.productName,
-            precio: Number(
-                document.querySelector("[data-product-price]").dataset.productPrice
-            ),
-            imagen: document.querySelector("[data-product-image]").dataset.productImage,
-            cantidad: 1
+            nombre:
+                productElement.dataset.productName,
+            precio:
+                Number(productElement.dataset.productPrice),
+            imagen:
+                productElement.dataset.productImage,
+            cantidad: quantity
         };
 
-        console.log("Producto para carrito:", product);
+        const cart =
+            JSON.parse(localStorage.getItem("cart")) || [];
 
+
+        const existingProduct = cart.find(item =>
+            item.id === product.id &&
+            item.variantId === product.variantId
+        );
+
+
+        if (existingProduct) {
+
+            existingProduct.cantidad += product.cantidad;
+
+        } else {
+
+            cart.push(product);
+
+        }
+
+
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+
+        console.log("Producto agregado al carrito:", product);
     });
 
 });

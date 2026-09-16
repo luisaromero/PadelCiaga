@@ -1,6 +1,6 @@
-<section class="product-detail container py-5">
+<section class="container py-5">
 
-  <div class="row g-5 align-items-center">
+  <div class="row align-items-center g-5">
 
     <!-- IMAGEN -->
     <div class="col-lg-6">
@@ -15,12 +15,20 @@
 
     <!-- INFORMACIÓN -->
     <div
-      class="col-lg-6 product-detail-info"
+      class="col-lg-6"
       data-product-id="{{product.id}}"
       data-product-name="{{product.nombre}}"
       data-product-price="{{product.precio}}"
       data-product-image="{{product.imagen}}"
     >
+
+      <nav class="breadcrumb-product" aria-label="Migas de pan">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <a href="/">Productos</a>
+        <span>/</span>
+        <span>{{product.nombre}}</span>
+      </nav>
 
       <h1>
         {{product.nombre}}

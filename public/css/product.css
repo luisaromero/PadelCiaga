@@ -1,9 +1,25 @@
-.product-detail {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+/* navbar */
+
+.breadcrumb-product {
+  margin-bottom: 2.5rem;
+  font-size: 0.78rem;
+  color: #888;
 }
 
-/* IMAGEN */
+.breadcrumb-product a {
+  color: #666;
+  text-decoration: none;
+}
+
+.breadcrumb-product a:hover {
+  color: #111;
+}
+
+.breadcrumb-product span {
+  margin: 0 0.4rem;
+}
+
+/* img */
 
 .product-detail-image {
   width: 100%;
@@ -14,7 +30,7 @@
   filter: grayscale(0.15) saturate(0.7);
 }
 
-/* INFORMACIÓN */
+/* info */
 
 .product-detail-info {
   padding-left: 2rem;
@@ -43,7 +59,7 @@
   color: #111;
 }
 
-/* DESCRIPCIÓN */
+/* desc */
 
 .product-description {
   max-width: 500px;
@@ -53,7 +69,7 @@
   line-height: 1.7;
 }
 
-/* COLOR */
+/* color */
 
 .product-color {
   display: flex;
@@ -82,7 +98,7 @@
   border-radius: 50%;
 }
 
-/* OPCIONES */
+/* opciones */
 
 .product-options {
   margin-bottom: 1.75rem;
@@ -95,7 +111,7 @@
   color: #333;
 }
 
-/* TALLAS */
+/* tallas */
 
 .variant-options {
   display: flex;
@@ -124,7 +140,7 @@
   color: white;
 }
 
-/* CANTIDAD */
+/* quantity */
 
 .quantity-selector {
   margin-bottom: 1.75rem;
@@ -156,7 +172,7 @@
   font-size: 0.9rem;
 }
 
-/* AGREGAR AL CARRITO */
+/* add to the cart */
 
 .add-product-btn {
   width: 100%;
@@ -178,7 +194,7 @@
   border-color: #333;
 }
 
-/* BENEFICIOS */
+/* benefits */
 
 .product-benefits {
   display: grid;
@@ -221,7 +237,7 @@
   line-height: 1.3;
 }
 
-/* RESPONSIVE */
+/* responsive */
 
 @media (max-width: 991px) {
   .product-detail-info {
@@ -249,5 +265,8 @@
 
   .product-benefits {
     grid-template-columns: 1fr;
+  }
+  .container {
+    padding-inline: 1.5rem;
   }
 }

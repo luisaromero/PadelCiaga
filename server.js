@@ -30,7 +30,6 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-    console.log("SESSION ACTUAL:", req.session);
 
     if (req.session.userId) {
 
@@ -220,7 +219,6 @@ app.route('/contact')
     .post((req, res) => {
         const { nombre, email, mensaje } = req.body;
 
-        console.log("Nuevo mensaje de contacto:", { nombre, email, mensaje });
 
         res.render("success", {
             nombre: nombre
@@ -281,18 +279,29 @@ app.route('/checkout')
     });
 
 
-app.post("/orders", async (req, res) => {
+app.post("/orders", requireAuth, async (req, res) => {
 
     const client = await pool.connect();
 
     try {
 
-        const { customer, products } = req.body;
+        const { products } = req.body;
 
         if (!products || products.length === 0) {
             return res.status(400).json({
                 error: "El carrito está vacío."
             });
+        }
+        for (const product of products) {
+
+            if (!product.variantId || !product.cantidad) {
+
+                return res.status(400).json({
+                    error: "El carrito contiene productos inválidos."
+                });
+
+            }
+
         }
 
         await client.query("BEGIN");
